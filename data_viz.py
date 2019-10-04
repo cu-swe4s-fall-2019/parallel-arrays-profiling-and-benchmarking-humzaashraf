@@ -1,4 +1,3 @@
-import get_data
 import math_lib
 import matplotlib.pyplot as plt
 import sys
