@@ -5,7 +5,7 @@ import sys
 import os 
 
 def boxplot(L,groups,title_name,out_file_name):
-    plt.figure(figsize=(10,5)dpi=300)
+    plt.figure(figsize=(10,5),dpi=300)
     plt.boxplot(L)
     tick_numbers = [i for i in range(len(groups))]
     plt.xticks(tick_numbers,groups,rotation='vertical')
