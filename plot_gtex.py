@@ -1,4 +1,6 @@
 import data_viz
+import sys
+import os
 
 def linear_search(key, L):
     for i in range(len(L)):
@@ -7,16 +9,15 @@ def linear_search(key, L):
     return -1
     
 
-def binary_serach(key, L):
+def binary_search(key, L):
     lo = -1
     hi = len(L)
     while (hi - lo > 0):
         mid = (hi + lo) // 2
 
         if key == L[mid]:
-            return L[mid]
-
-        if (key < L[mid]):
+            return(L[mid])
+        elif (key < L[mid]):
             hi = mid
         else:  
             lo = mid
@@ -26,13 +27,24 @@ def binary_serach(key, L):
 
 def main():
 
-    data_file_name='GTEx_Analysis_2017-06-05_v8_RNASeQCv1.1.9_gene_reads.acmg_59.gct'
-    sample_info_file_name='GTEx_Analysis_v8_Annotations_SampleAttribut.txt'
+    parser = argparse.ArgumentParser(
+             description='arguments',
+             prog='input arg')
 
-    group_col_name = 'SMTS'
+    parser.add_argument('--gene', type=int, help='name of gene')
+    parser.add_argument('--group_type', type=str, help='SMTS or SMTDS')
+    parser.add_argument('--data_file_name', type=str, help='GTEx_Analysis_2017-06-05_v8_RNASeQCv1.1.9_gene_reads.acmg_59.gct')
+    parser.add_argument('--sample_info_file_name', type=str, help='GTEx_Analysis_v8_Annotations_SampleAttribut.txt.txt') 
+
+    args = parser.parse_args()
+
+    args.data_file_name=='GTEx_Analysis_2017-06-05_v8_RNASeQCv1.1.9_gene_reads.acmg_59.gct'
+    args.sample_info_file_name=='GTEx_Analysis_v8_Annotations_SampleAttribut.txt.txt'
+
+    group_col_name = args.group_type
     sample_id_col_name = 'SAMPID'
 
-    title_name = 'ACTA2'
+    title_name = args.gene
 
     samples = []
     sample_info_header = None
@@ -95,6 +107,7 @@ def main():
             break 
 
     data_viz.boxplot(group_counts,groups,title_name,'test')
+
 
 if __name__ == '__main__':
     main()
