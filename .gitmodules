@@ -1,0 +1,9 @@
+[submodule "utils"]
+	path = utils
+	url = https://github.com/swe4s/utils.git
+[submodule "hash-tables-humzaashraf"]
+	path = hash-tables-humzaashraf
+	url = https://github.com/cu-swe4s-fall-2019/hash-tables-humzaashraf
+[submodule "hash_tables_humzaashraf"]
+	path = hash_tables_humzaashraf
+	url = https://github.com/cu-swe4s-fall-2019/hash_tables_humzaashraf
